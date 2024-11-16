@@ -135,7 +135,7 @@ subprojects {
     revapi {
       oldGroup = project.group
       oldName = project.name
-      oldVersion = "1.6.0"
+      oldVersion = "1.7.0"
     }
 
     tasks.register('showDeprecationRulesOnRevApiFailure') {
@@ -835,39 +835,6 @@ project(':iceberg-arrow') {
     testImplementation libs.arrow.memory.netty
     testImplementation libs.hadoop2.common
     testImplementation libs.hadoop2.mapreduce.client.core
-  }
-}
-
-project(':iceberg-pig') {
-  test {
-    useJUnitPlatform()
-  }
-
-  dependencies {
-    implementation project(path: ':iceberg-bundled-guava', configuration: 'shadow')
-    api project(':iceberg-api')
-    implementation project(':iceberg-common')
-    implementation project(':iceberg-core')
-    implementation project(':iceberg-parquet')
-
-    implementation(libs.parquet.avro) {
-      exclude group: 'org.apache.avro', module: 'avro'
-      // already shaded by Parquet
-      exclude group: 'it.unimi.dsi'
-      exclude group: 'org.codehaus.jackson'
-    }
-
-    compileOnly(libs.pig) {
-      exclude group: "junit", module: "junit"
-    }
-    compileOnly(libs.hadoop2.mapreduce.client.core)
-    compileOnly(libs.hadoop2.client) {
-      exclude group: 'org.apache.avro', module: 'avro'
-    }
-
-    testImplementation(libs.hadoop2.minicluster) {
-      exclude group: 'org.apache.avro', module: 'avro'
-    }
   }
 }
 
