@@ -730,10 +730,10 @@ Creates a catalog entry for a metadata.json file which already exists but does n
 
 #### Usage
 
-| Argument Name | Required? | Type | Description |
-|---------------|-----------|------|-------------|
-| `table`       | ✔️  | string | Table which is to be registered |
-| `metadata_file`| ✔️  | string | Metadata file which is to be registered as a new catalog identifier |
+| Argument Name | Required? | Type | Description                                                           |
+|---------------|-----------|------|-----------------------------------------------------------------------|
+| `table`       | ✔️  | string | Table which is to be registered                                       |
+| `metadata_file`| ✔️  | string | Metadata file which is to be registered as a new catalog identifier. If metadata folder is provided as path, the latest metadata file will be used to register the table. |
 
 !!! warning
     Having the same metadata.json registered in more than one catalog can lead to missing updates, loss of data, and table corruption.
